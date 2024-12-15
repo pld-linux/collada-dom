@@ -1,0 +1,33 @@
+--- collada-dom-2.5.0/dom/include/dae.h~	2017-10-21 07:05:24.000000000 +0200
++++ collada-dom-2.5.0/dom/include/dae.h	2024-12-15 22:50:26.692246872 +0100
+@@ -25,7 +25,7 @@
+ #pragma warning(disable: 4180 4245)
+ #endif
+ #ifndef NO_BOOST
+-#include <boost/filesystem/convenience.hpp>
++#include <boost/filesystem/operations.hpp>
+ #endif
+ #ifdef _MSC_VER
+ #pragma warning(pop)
+--- collada-dom-2.5.0/dom/src/dae/daeUtils.cpp~	2017-10-21 07:05:24.000000000 +0200
++++ collada-dom-2.5.0/dom/src/dae/daeUtils.cpp	2024-12-15 22:59:48.425839478 +0100
+@@ -18,7 +18,7 @@
+ #endif
+ 
+ #ifndef NO_BOOST
+-#include <boost/filesystem/convenience.hpp>       // THIS WAS NOT COMMENTED.
++#include <boost/filesystem/operations.hpp>       // THIS WAS NOT COMMENTED.
+ #endif
+ 
+ #include <cstdio> // for tmpnam
+--- collada-dom-2.5.0/dom/src/dae/daeZAEUncompressHandler.cpp~	2017-10-21 07:05:24.000000000 +0200
++++ collada-dom-2.5.0/dom/src/dae/daeZAEUncompressHandler.cpp	2024-12-15 23:03:02.412243470 +0100
+@@ -271,7 +271,7 @@
+     bool error = false;
+ 
+     boost::filesystem::path archivePath(filePath);
+-    std::string dir = archivePath.branch_path().string();
++    std::string dir = archivePath.parent_path().string();
+ 
+     const std::string& randomSegment = cdom::getRandomFileName();
+     std::string tmpDir = dir + cdom::getFileSeparator() + randomSegment + cdom::getFileSeparator();

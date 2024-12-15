@@ -2,13 +2,14 @@ Summary:	COLLADA Document Object Model (DOM) library
 Summary(pl.UTF-8):	Biblioteka obiektowego modelu dokumentu (DOM) COLLADA
 Name:		collada-dom
 Version:	2.5.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 #Source0Download: https://github.com/rdiankov/collada-dom/tags
 Source0:	https://github.com/rdiankov/collada-dom/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	5caf23bd2302d07c86c85fa9b9209d87
 Patch0:		%{name}-minizip-include.patch
+Patch1:		boost-1.87.patch
 URL:		https://www.khronos.org/collada/
 BuildRequires:	boost-devel >= 1.33
 BuildRequires:	cmake >= 2.6.0
@@ -45,7 +46,8 @@ Pliki nagłówkowe biblioteki COLLADA DOM.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 install -d build
